@@ -62,3 +62,17 @@ prev.addEventListener('click', function () {
     thumbnailsArray[counter].classList.remove('overlay');
   }
 });
+
+for (let c = 0; c < array.length; c++) {
+  thumbnailsArray[c].addEventListener('click', function () {
+    for (let i = 0; i < array.length; i++) {
+      if (thumbnailsArray[c].src === array[i].src) {
+        array[counter].classList.remove('active');
+        thumbnailsArray[counter].classList.add('overlay');
+        counter = c;
+        array[counter].classList.add('active');
+        thumbnailsArray[counter].classList.remove('overlay');
+      }
+    }
+  });
+}
