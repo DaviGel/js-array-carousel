@@ -29,6 +29,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .item.active {
@@ -79,4 +80,31 @@
   bottom: 35%;
   left: 50%;
   transform: translate(-50%) rotate(135deg);
+}
+
+.thumbnailsContainer {
+  position: absolute;
+  top: 0;
+  right: -105px;
+}
+
+.thumbnail {
+  height: 60px;
+  position: relative;
+}
+
+.thumbnailsContainer img {
+  width: 105px;
+  height: 60px;
+  display: block;
+}
+
+.thumbnail.overlay::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
