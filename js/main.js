@@ -5,8 +5,6 @@ const prev = document.querySelector('.prev');
 const array = [];
 const thumbnailsArray = [];
 let counter = 0;
-let counterThumbnails = 0;
-let index = 0;
 const thumbnailsContainer = document.createElement('div');
 thumbnailsContainer.classList.add('thumbnailsContainer');
 
