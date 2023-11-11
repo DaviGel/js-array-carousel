@@ -2,8 +2,6 @@ const imagesArray = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg'];
 const items = document.querySelector('.items');
 const next = document.querySelector('.next');
 const prev = document.querySelector('.prev');
-const array = [];
-const thumbnailsArray = [];
 let counter = 0;
 const thumbnailsContainer = document.createElement('div');
 thumbnailsContainer.classList.add('thumbnailsContainer');
@@ -13,13 +11,11 @@ for (let i = 0; i < imagesArray.length; i++) {
   element.classList.add('item');
   element.innerHTML = `<img src = "img/${imagesArray[i]}" alt = "img${i}">`;
   items.append(element);
-  array.push(element);
   const thumbnail = document.createElement('div');
   thumbnail.classList.add('thumbnail');
   thumbnail.innerHTML = `<img src = "img/${imagesArray[i]}" alt = "img${i}">`;
   thumbnailsContainer.append(thumbnail);
   items.append(thumbnailsContainer);
-  thumbnailsArray.push(thumbnail);
   if (i === 0) {
     element.classList.add('active');
   } else {
@@ -27,49 +23,50 @@ for (let i = 0; i < imagesArray.length; i++) {
   }
 }
 
-const item = document.querySelector('.item');
+const domItems = document.querySelectorAll('.item');
+const domThumbnails = document.querySelectorAll('.thumbnail');
 
 next.addEventListener('click', function () {
-  if (counter < array.length - 1) {
-    array[counter].classList.remove('active');
-    thumbnailsArray[counter].classList.add('overlay');
+  if (counter < domItems.length - 1) {
+    domItems[counter].classList.remove('active');
+    domThumbnails[counter].classList.add('overlay');
     counter++;
-    array[counter].classList.add('active');
-    thumbnailsArray[counter].classList.remove('overlay');
+    domItems[counter].classList.add('active');
+    domThumbnails[counter].classList.remove('overlay');
   } else {
-    array[counter].classList.remove('active');
-    thumbnailsArray[counter].classList.add('overlay');
+    domItems[counter].classList.remove('active');
+    domThumbnails[counter].classList.add('overlay');
     counter = 0;
-    array[counter].classList.add('active');
-    thumbnailsArray[counter].classList.remove('overlay');
+    domItems[counter].classList.add('active');
+    domThumbnails[counter].classList.remove('overlay');
   }
 });
 
 prev.addEventListener('click', function () {
   if (counter > 0) {
-    array[counter].classList.remove('active');
-    thumbnailsArray[counter].classList.add('overlay');
+    domItems[counter].classList.remove('active');
+    domThumbnails[counter].classList.add('overlay');
     counter--;
-    array[counter].classList.add('active');
-    thumbnailsArray[counter].classList.remove('overlay');
+    domItems[counter].classList.add('active');
+    domThumbnails[counter].classList.remove('overlay');
   } else {
-    array[counter].classList.remove('active');
-    thumbnailsArray[counter].classList.add('overlay');
-    counter = array.length - 1;
-    array[counter].classList.add('active');
-    thumbnailsArray[counter].classList.remove('overlay');
+    domItems[counter].classList.remove('active');
+    domThumbnails[counter].classList.add('overlay');
+    counter = domItems.length - 1;
+    domItems[counter].classList.add('active');
+    domThumbnails[counter].classList.remove('overlay');
   }
 });
 
-for (let c = 0; c < array.length; c++) {
-  thumbnailsArray[c].addEventListener('click', function () {
-    for (let i = 0; i < array.length; i++) {
-      if (thumbnailsArray[c].src === array[i].src) {
-        array[counter].classList.remove('active');
-        thumbnailsArray[counter].classList.add('overlay');
+for (let c = 0; c < domItems.length; c++) {
+  domThumbnails[c].addEventListener('click', function () {
+    for (let i = 0; i < domItems.length; i++) {
+      if (domThumbnails[c].src === domItems[i].src) {
+        domItems[counter].classList.remove('active');
+        domThumbnails[counter].classList.add('overlay');
         counter = c;
-        array[counter].classList.add('active');
-        thumbnailsArray[counter].classList.remove('overlay');
+        domItems[counter].classList.add('active');
+        domThumbnails[counter].classList.remove('overlay');
       }
     }
   });
