@@ -92,12 +92,18 @@
 .thumbnail {
   height: 60px;
   position: relative;
+  border: 1px solid red;
+}
+
+.thumbnail.overlay {
+  border: none;
 }
 
 .thumbnailsContainer img {
   width: 105px;
   height: 60px;
   display: block;
+  object-fit: cover;
 }
 
 .thumbnail.overlay::after {
