@@ -11,6 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateX(-52.5px);
 }
 
 .items {
