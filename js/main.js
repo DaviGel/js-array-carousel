@@ -1,27 +1,24 @@
 const imagesArray = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg'];
 const items = document.querySelector('.items');
-const next = document.querySelector('.next');
-const prev = document.querySelector('.prev');
 let counter = 0;
-const thumbnailsContainer = document.createElement('div');
-thumbnailsContainer.classList.add('thumbnailsContainer');
+let item = '';
+let thumbnail = '';
 
 for (let i = 0; i < imagesArray.length; i++) {
-  const element = document.createElement('div');
-  element.classList.add('item');
-  element.innerHTML = `<img src = "img/${imagesArray[i]}" alt = "img${i}">`;
-  items.append(element);
-  const thumbnail = document.createElement('div');
-  thumbnail.classList.add('thumbnail');
-  thumbnail.innerHTML = `<img src = "img/${imagesArray[i]}" alt = "img${i}">`;
-  thumbnailsContainer.append(thumbnail);
-  items.append(thumbnailsContainer);
   if (i === 0) {
-    element.classList.add('active');
+    item += `<div class = "item active"><img src = "img/${imagesArray[i]}" alt = "img${i}"></div>`;
+    thumbnail += `<div class = "thumbnail"><img src = "img/${imagesArray[i]}" alt = "img${i}"></div>`;
   } else {
-    thumbnail.classList.add('overlay');
+    item += `<div class = "item"><img src = "img/${imagesArray[i]}" alt = "img${i}"></div>`;
+    thumbnail += `<div class = "thumbnail overlay"><img src = "img/${imagesArray[i]}" alt = "img${i}"></div>`;
   }
 }
+
+items.innerHTML +=
+  item + `<div class = "thumbnailsContainer">${thumbnail}</div>`;
+
+const next = document.querySelector('.next');
+const prev = document.querySelector('.prev');
 
 const domItems = document.querySelectorAll('.item');
 const domThumbnails = document.querySelectorAll('.thumbnail');
